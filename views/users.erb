@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-4">
+    <p class="display-6">Add new user</p>
+    <form action="/user" method="post">
+    <label for="new_user_username" class="form-label">Username</label>
+    <input type="text" class="form-control" name="new_user_username">
+    <label for="new_user_password" class="form-label">Password</label>
+    <input type="password" class="form-control" name="new_user_password" placeholder="Very secret">
+    <input type="submit" class="btn btn-primary mt-2">
+    </form>
+  </div>
+  <div class="col-sm-3">
+    <div class="card mt-2">
+      <div class="card-header">Users</div>
+      <ul class="list-group list-group-flush">
+      <% @users.each do |user| %>
+        <% enabled = 'class="btn btn-primary ms-3"' %>
+        <% disabled = 'class="btn btn-primary ms-3 disabled" role="button"' %>
+        <% if users_in_use.any?{|user_in_use| user_in_use.eql?(user)}; then state = disabled; else state = enabled; end %>
+        <li class="list-group-item"><p class="card-text d-flex justify-content-between"><%= user %><a href="/delete/<%= user %>" <%= state %> >delete</a></p></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

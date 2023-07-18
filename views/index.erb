@@ -1,0 +1,55 @@
+<div class="row">
+  <% @iface_data.each do |iface| %>
+    <!-- div class="card mt-2" style="width: 18rem;" -->
+    <div class="col-sm-3">
+    <div class="card mt-2">
+      <div class="card-header">
+        <% iface.each_pair do |key, value|  %>
+        <%= key %>&colon;
+      </div>
+      <ul class="list-group list-group-flush">
+      <% value.each do |addr| %>
+        <li class="list-group-item"><%= addr %></li>
+      <% end %>
+    <% end %>
+    </div>
+    </div>
+  <% end %>
+  <div class="col-sm-3">
+    <div class="card mt-2">
+    <div class="card-header">
+      Users
+    </div>
+    <ul class="list-group list-group-flush">
+    <% @users.each do |user| %>
+      <li class="list-group-item"><%= user %></li>
+    <% end %>
+    </ul>
+  </div>
+  </div>
+  <div class="col-sm-6">
+    <% index_counter = 0 %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Inbound</th>
+          <th scope="col">Outbound</th>
+          <th scope="col">User</th>
+          <th scope="col">Port</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tunnels.each do |tunnel| %>
+        <tr>
+          <th scope="row"><%= index_counter += 1 %></th>
+          <td><%= tunnel[:inbound] %></td>
+          <td><%= tunnel[:outbound] %></td>
+          <td><%= tunnel[:username] %></td>
+          <td><%= tunnel[:port] %></td>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
