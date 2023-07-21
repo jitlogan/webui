@@ -130,6 +130,9 @@ end
 post '/tunnel' do
   if session[:user_id]
     unless get_ports.any?{|used_port| used_port.eql?(params[:port].to_i)}
+      if params[:port].to_i <= 1024
+        halt 403, "The port value must be greater then 1024."
+      end
       add_tunnel(params['tunnel-type'], params['inbound'], params['outbound'], params['tunnel_user'], params[:port])
       redirect '/tunnels'
     else
