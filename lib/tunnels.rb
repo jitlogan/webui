@@ -14,7 +14,7 @@ class Yxorp3
         tunnel_parsed = {}
         entry[:tunnel].split.each do |tun_param|
           case tun_param
-          when /^socks/
+          when /^socks|^http/
             tunnel_parsed[:type] = tun_param
           when /^-i/
             tunnel_parsed[:inbound] = tun_param.delete('-i')
