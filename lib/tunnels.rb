@@ -2,7 +2,7 @@ class Yxorp3
   class Tunnel
     def initialize
       tunnels = File.read('/usr/local/3proxy/conf/tunnels')
-      unless tunnels.match(/socks/)
+      unless tunnels.match(/socks|proxy/)
         @tunnels = []
         return @tunnels
       end
