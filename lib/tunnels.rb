@@ -35,7 +35,7 @@ class Yxorp3
     end
 
     def add_tunnel(type, inbound, outbound, user, port)
-      @tunnels << {username: user, type: 'socks5', inbound: inbound, outbound: outbound, port: port, tunnel: "#{type} -i#{inbound} -e#{outbound} -p#{port}"}
+      @tunnels << {username: user, type: type, inbound: inbound, outbound: outbound, port: port, tunnel: "#{type} -i#{inbound} -e#{outbound} -p#{port}"}
     end
 
     def delete_tunnel(id)
