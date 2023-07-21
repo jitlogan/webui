@@ -36,6 +36,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Type/th>
           <th scope="col">Inbound</th>
           <th scope="col">Outbound</th>
           <th scope="col">User</th>
@@ -47,6 +48,7 @@
         <% @tunnels.each do |tunnel| %>
         <tr>
           <th scope="row"><%= index_counter += 1 %></th>
+          <td><%= tunnel[:type] %></td>
           <td><%= tunnel[:inbound] %></td>
           <td><%= tunnel[:outbound] %></td>
           <td><%= tunnel[:username] %></td>
